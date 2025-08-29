@@ -7,8 +7,8 @@
 
 #include "engine.hpp"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+//#define STB_IMAGE_IMPLEMENTATION
+//#include <stb_image.h>
 
 #include <filesystem>
 
@@ -143,12 +143,12 @@ void Engine::createTextureImage() {
     if (enableValidationLayers) std::cout << "createTextureImage\n";
 
     int texWidth, texHeight, texChannels;
-    stbi_uc* pixels = stbi_load("textures/texture.png", &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
+    //stbi_uc* pixels = stbi_load("textures/texture.png", &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
     std::cout << "Trying to load texture from: " << std::filesystem::absolute("textures/texture.png") << std::endl;
     VkDeviceSize imageSize = texWidth * texHeight * 4;
     mipLevels = static_cast<uint32_t>(std::floor(std::log2(std::max(texWidth, texHeight)))) + 1;
 
-    if (!pixels) throw std::runtime_error("failed to load texture image!");
+    //if (!pixels) throw std::runtime_error("failed to load texture image!");
     if (enableValidationLayers) std::cout << "Texture Loaded: " << "Width: " << texWidth << " Height: " << texHeight << " Channels: " << texChannels << std::endl;
 
     VkBuffer stagingBuffer;
@@ -157,10 +157,10 @@ void Engine::createTextureImage() {
 
     void* data;
     vkMapMemory(device, stagingBufferMemory, 0, imageSize, 0, &data);
-    memcpy(data, pixels, static_cast<size_t>(imageSize));
+    //memcpy(data, pixels, static_cast<size_t>(imageSize));
     vkUnmapMemory(device, stagingBufferMemory);
 
-    stbi_image_free(pixels);
+    //stbi_image_free(pixels);
 
     createImage(texWidth, texHeight, mipLevels, VK_SAMPLE_COUNT_1_BIT, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, textureImage, textureImageMemory);
     transitionImageLayout(textureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, mipLevels);

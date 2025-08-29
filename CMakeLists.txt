@@ -29,8 +29,11 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(glfw GIT_REPOSITORY https://github.com/glfw/glfw.git GIT_TAG 3.4)
 FetchContent_MakeAvailable(glfw)
 
+FetchContent_Declare(StarletMath GIT_REPOSITORY https://github.com/masonlet/starletmath.git GIT_TAG main)
+FetchContent_MakeAvailable(StarletMath)
+
 find_package(Vulkan REQUIRED)
-target_link_libraries(LearningVulkan PRIVATE glfw Vulkan::Vulkan)
+target_link_libraries(LearningVulkan PRIVATE glfw Vulkan::Vulkan StarletMath)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "External")

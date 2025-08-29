@@ -1,5 +1,5 @@
 #include "engine.hpp"
-
+#include "starletmath/constants.hpp"
 #include <chrono>
 
 VkCommandBuffer Engine::beginSingleTimeCommands() const {
@@ -209,10 +209,13 @@ void Engine::updateUniformBuffer(uint32_t currentImage, VkExtent2D& swapChainExt
     float time = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
 
     Engine::UniformBufferObject ubo{};
-    ubo.model = glm::rotate(glm::mat4(1.0f), time * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    ubo.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    ubo.proj = glm::perspective(glm::radians(45.0f), static_cast<float>(swapChainExtent.width) / static_cast<float>(swapChainExtent.height), 0.1f, 10.0f);
-    ubo.proj[1][1] *= -1;
+    //ubo.model = glm::rotate(Mat4(1.0f), time * radians(90.0f), Vec3(0.0f, 0.0f, 1.0f));
+    ubo.model = Mat4::identity();
+    //ubo.view = glm::lookAt(Vec3(2.0f, 2.0f, 2.0f), Vec3(0.0f, 0.0f, 0.0f), Vec3(0.0f, 0.0f, 1.0f));
+    ubo.view = Mat4::identity();
+    //ubo.proj = glm::perspective(radians(45.0f), static_cast<float>(swapChainExtent.width) / static_cast<float>(swapChainExtent.height), 0.1f, 10.0f);
+    ubo.proj = Mat4::identity();
+    //ubo.proj[1][1] *= -1;
 
     memcpy(uniformBuffersMapped[currentImage], &ubo, sizeof(ubo));
 }

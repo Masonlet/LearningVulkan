@@ -1,23 +1,17 @@
 #pragma once
 
-/*
-* Mason L'Etoile
-* March 20, 2025
-* Vulkan 3D Engine
-* Handles vulkan engine creation
-*/
-
-// Core Libraries
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
-// Standard Libraries
+#include "starletmath/vec2.hpp"
+#include "starletmath/vec3.hpp"
+#include "starletmath/mat4.hpp"
+
 #include <array>
 #include <vector>
 #include <optional>
 #include <iostream>
 
-// Constants
 constexpr uint32_t WIDTH = 800;
 constexpr uint32_t HEIGHT = 600;
 constexpr int MAX_FRAMES_IN_FLIGHT = 2;
@@ -52,9 +46,9 @@ public:
         std::vector<VkPresentModeKHR> presentModes;
     };
     struct Vertex {
-        glm::vec3 pos;
-        glm::vec3 color;
-        glm::vec2 texCoord;
+        Vec3 pos;
+        Vec3 color;
+        Vec2 texCoord;
 
         static VkVertexInputBindingDescription getBindingDescription() {
             VkVertexInputBindingDescription bindingDescription{};
@@ -88,9 +82,9 @@ public:
         }
     };
     struct UniformBufferObject {
-        glm::mat4 model;
-        glm::mat4 view;
-        glm::mat4 proj;
+        Mat4 model;
+        Mat4 view;
+        Mat4 proj;
     };
 
     bool framebufferResized = false;
