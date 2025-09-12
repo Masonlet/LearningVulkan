@@ -55,5 +55,5 @@ set_target_properties(LearningVulkan PROPERTIES
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT LearningVulkan)
 
 file (TO_CMAKE_PATH "${CMAKE_SOURCE_DIR}/assets" ASSET_PATH)
-target_compile_definitions(LearningVulkan PRIVATE ASSET_DIR="${ASSET_PATH}")
+target_compile_definitions(LearningVulkan PRIVATE ASSET_DIR="${ASSET_PATH}" GLFW_INCLUDE_VULKAN)
 
