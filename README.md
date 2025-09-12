@@ -1,6 +1,20 @@
 # LearningVulkan
 A repository to better understand and explain Vulkan.
 
+## Branches
+Branches are used to demonstrate specific Vulkan concepts, building step by step from the basics to more advanced topics.
+
+- **Branch 0.0** - Demonstrates how to set up and build a minimal Vulkan project using **CMake**
+- **Branch 0.1** - *W.I.P*
+- **Branch 0.2** - *W.I.P*
+- **Branch 0.3** - *W.I.P*
+- **Branch 0.4** - *W.I.P*
+- **Branch 0.5** - *W.I.P*
+- **Branch 0.6** - *W.I.P*
+- **Branch 0.7** - *W.I.P*
+- **Branch 0.8** - *W.I.P*
+- **Branch 0.9** - *W.I.P*
+- **Branch 1.0** - Triangle *W.I.P*
 
 ## Building the Project
 This project uses **CMake**. Follow these steps to build:
