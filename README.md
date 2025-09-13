@@ -5,7 +5,7 @@ A repository to better understand and explain Vulkan.
 Branches are used to demonstrate specific Vulkan concepts, building step by step from the basics to more advanced topics.
 
 - **Branch 0.0** - Demonstrates how to set up and build a minimal Vulkan project using **CMake**
-- **Branch 0.1** - *W.I.P*
+- **Branch 0.1** - Demonstrates the bare minimum for a **GLFW** window
 - **Branch 0.2** - *W.I.P*
 - **Branch 0.3** - *W.I.P*
 - **Branch 0.4** - *W.I.P*
